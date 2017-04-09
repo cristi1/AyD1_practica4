@@ -62,10 +62,10 @@ public class UsuarioDAOTest extends TestCase {
      */
     public void testInsertUsuario() {
         System.out.println("insertUsuario");
-        String nombre = "";
-        String usuario = "";
-        String correo = "";
-        String password = "";
+        String nombre = "Carminia Fuentes";
+        String usuario = "carmiUnica";
+        String correo = "carmi123@gmail.com";
+        String password = "carmi123";
         UsuarioDAO instance = new UsuarioDAO();
         boolean expResult = false;
         boolean result = instance.insertUsuario(nombre, usuario, correo, password);
