@@ -63,11 +63,11 @@ public class UsuarioDAOTest extends TestCase {
     public void testInsertUsuario() {
         System.out.println("insertUsuario");
         String nombre = "Carminia Fuentes";
-        String usuario = "carmiUnica";
+        String usuario = "carmiUnica3";
         String correo = "carmi123@gmail.com";
         String password = "carmi123";
         UsuarioDAO instance = new UsuarioDAO();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.insertUsuario(nombre, usuario, correo, password);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
