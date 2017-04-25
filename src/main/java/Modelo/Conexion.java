@@ -28,6 +28,5 @@ public class Conexion {
             System.err.println(e.getMessage());
         }
         return cn;
-    }
-    
+    } 
 }

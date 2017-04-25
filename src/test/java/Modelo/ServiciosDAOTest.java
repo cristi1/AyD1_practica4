@@ -11,9 +11,9 @@ import junit.framework.TestCase;
  *
  * @author Usuario
  */
-public class UsuarioDAOTest extends TestCase {
+public class ServiciosDAOTest extends TestCase {
     
-    public UsuarioDAOTest(String testName) {
+    public ServiciosDAOTest(String testName) {
         super(testName);
     }
     
@@ -28,47 +28,45 @@ public class UsuarioDAOTest extends TestCase {
     }
 
     /**
-     * Test of login method, of class UsuarioDAO.
+     * Test of existCuenta method, of class ServiciosDAO.
      */
-    public void testLogin() {
-        System.out.println("login");
-        String user = "lauralopez";
-        String pass = "12345";
-        int cod = 19;
-        UsuarioDAO instance = new UsuarioDAO();
-        String expResult = "190789"+","+"Laura Lopez"+","+"19";
-        String result = instance.login(user, pass, cod);
+    public void testExistCuenta() {
+        System.out.println("existCuenta");
+        String noCuenta = "600789";
+        ServiciosDAO instance = new ServiciosDAO();
+        boolean expResult = true;
+        boolean result = instance.existCuenta(noCuenta);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of existUsuario method, of class UsuarioDAO.
+     * Test of disponibilidadSaldo method, of class ServiciosDAO.
      */
-    public void testExistUsuario() {
-        System.out.println("existUsuario");
-        String user = "lauralopez";
-        UsuarioDAO instance = new UsuarioDAO();
+    public void testDisponibilidadSaldo() {
+        System.out.println("disponibilidadSaldo");
+        String noCuenta = "600789";
+        int cantidad = 50;
+        ServiciosDAO instance = new ServiciosDAO();
         boolean expResult = true;
-        boolean result = instance.existUsuario(user);
+        boolean result = instance.disponibilidadSaldo(noCuenta, cantidad);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
 
     /**
-     * Test of insertUsuario method, of class UsuarioDAO.
+     * Test of pagoServicio method, of class ServiciosDAO.
      */
-    public void testInsertUsuario() {
-        System.out.println("insertUsuario");
-        String nombre = "Carminia Fuentes";
-        String usuario = "carmiUnica71";
-        String correo = "carmi123@gmail.com";
-        String password = "carmi123";
-        UsuarioDAO instance = new UsuarioDAO();
+    public void testPagoServicio() {
+        System.out.println("pagoServicio");
+        String noCuentaCliente = "600789";
+        String noCuentaServicio = "600789";
+        int cantidad = 50;
+        ServiciosDAO instance = new ServiciosDAO();
         boolean expResult = true;
-        boolean result = instance.insertUsuario(nombre, usuario, correo, password);
+        boolean result = instance.pagoServicio(noCuentaCliente, noCuentaServicio, cantidad);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

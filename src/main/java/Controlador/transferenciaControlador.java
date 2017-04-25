@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usuario
  */
-public class consultaSaldo extends HttpServlet {
+public class transferenciaControlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,15 +31,30 @@ public class consultaSaldo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ServiciosDAO servicio = new ServiciosDAO();
-        Usuario session;
-        session = (Usuario)request.getSession().getAttribute("actual");
-        int saldo = servicio.getSaldo(session.getCuenta());
-        System.out.println("mi saldo es de: " + saldo);
-        //String miSaldo = Integer.toString(saldo);
-        String miSaldo = "90";
-        request.setAttribute("saldo",miSaldo);
-        request.getRequestDispatcher("/consultarSaldo.jsp").forward(request,response);
+        String cuenta = request.getParameter("txtCuenta");
+        String monto = request.getParameter("txtMonto");
+        
+        Usuario temp = (Usuario)request.getSession().getAttribute("actual");
+        
+        if(cuenta.equals("") || monto.equals("")){
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }else{
+            int cantidad = Integer.parseInt(monto);
+            ServiciosDAO servicios = new ServiciosDAO();
+            if(servicios.existCuenta(cuenta)){
+                if(servicios.disponibilidadSaldo(temp.getCuenta(), cantidad)){
+                    if(servicios.pagoServicio(temp.getCuenta(), cuenta, cantidad)){
+                        request.getRequestDispatcher("pagoExitoso.jsp").forward(request, response);
+                    }else{
+                        request.getRequestDispatcher("error_usuario.jsp").forward(request, response);
+                    }
+                }else{
+                    request.getRequestDispatcher("error_usuario.jsp").forward(request, response);
+                }
+            }else{
+                request.getRequestDispatcher("error_usuario.jsp").forward(request, response);
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

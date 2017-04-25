@@ -37,5 +37,58 @@ public class ServiciosDAO {
         
     }
     
+    public boolean existCuenta(String noCuenta){
+        boolean resp = false;
+        ResultSet rs;
+        try{
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{call sp_existCuenta(?)}");
+            cs.setString(1,noCuenta);
+            rs = cs.executeQuery();
+            if(rs.next()){
+                return true; //si existe el usuario
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return resp;
+    }
+    
+    public boolean disponibilidadSaldo(String noCuenta, int cantidad){
+        boolean resp = false;
+        ResultSet rs;
+        try{
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{call sp_verSaldo(?,?)}");
+            cs.setString(1,noCuenta);
+            cs.setInt(2, cantidad);
+            rs = cs.executeQuery();
+            if(rs.next()){
+                return true; //si existe el usuario
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return resp;
+    }
+    
+    public boolean pagoServicio(String noCuentaCliente, String noCuentaServicio, int cantidad ){
+        boolean resp = false;
+        ResultSet rs;
+        try{
+            Connection accesoBD = conexion.getConexion();
+            CallableStatement cs = accesoBD.prepareCall("{call sp_pagarServicio(?,?,?)}");
+            cs.setString(1,noCuentaCliente);
+            cs.setString(2,noCuentaServicio);
+            cs.setInt(3, cantidad);
+            rs = cs.executeQuery();
+            resp = true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            resp = false;
+        }
+        return resp;
+    }
+    
 }
 

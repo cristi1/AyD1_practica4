@@ -20,6 +20,7 @@
         <a href = "pagoServicios.jsp"><h3>Pago Servicios </h3></a> <br/>
         <a href = "transferencias.jsp"><h3>Transferencias </h3></a> <br/>
         <a href = "credito.jsp"><h3>Credito </h3></a> <br/>
-        <a href = "debito.jsp"><h3>Debito </h3></a> <br/>
+        <a href = "debito.jsp"><h3>Debito </h3></a> <br/><br/><br/>
+        <a href = "index.jsp"><h3>Cerrar Sesion </h3></a> <br/>
     </body>
 </html>

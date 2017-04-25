@@ -12,6 +12,18 @@
         <servlet-name>registroControlador</servlet-name>
         <servlet-class>Controlador.registroControlador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>pagoServicioControlador0</servlet-name>
+        <servlet-class>Controlador.pagoServicioControlador0</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>transferenciaControlador</servlet-name>
+        <servlet-class>Controlador.transferenciaControlador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>debitoControlador</servlet-name>
+        <servlet-class>Controlador.debitoControlador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>consultaSaldo</servlet-name>
         <url-pattern>/consultaSaldo.do</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>registroControlador</servlet-name>
         <url-pattern>/registroControlador.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pagoServicioControlador0</servlet-name>
+        <url-pattern>/pagoServicioControlador0</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>transferenciaControlador</servlet-name>
+        <url-pattern>/transferenciaControlador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>debitoControlador</servlet-name>
+        <url-pattern>/debitoControlador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
